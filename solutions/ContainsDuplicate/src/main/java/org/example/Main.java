@@ -6,13 +6,13 @@ public class Main {
 
     public boolean containsDuplicate(int[] nums) {
 
-        HashMap<Integer, Boolean> numList = new HashMap<Integer, Boolean>();
+        HashMap<Integer, Integer> numList = new HashMap<Integer, Integer>();
 
         for (int num: nums) {
-            if(numList.containsKey(num)){
+            if(numList.containsKey(num) && (numList.get(num) >= 1)) {
                 return true;
             }
-            numList.put(num, true);
+            numList.put(num, numList.getOrDefault(num, 0)+1);
         }
         return false;
     }
